@@ -1,8 +1,8 @@
 #
-#Banking simulator. Write a code in python that simulates the banking system. 
+#AccountInfoing simulator. Write a code in python that simulates the AccountInfoing system. 
 #The program should:
-# - be able to create new banks
-# - store client information in banks
+# - be able to create new AccountInfos
+# - store client information in AccountInfos
 # - allow for cash input and withdrawal
 # - allow for money transfer from client to client
 #If you can think of any other features, you can add them.
@@ -24,3 +24,46 @@
 #
 #Delete these comments before commit!
 #Good luck.
+
+class Bank:
+    def __init__(self, bankname):
+        self.bankname = bankname
+
+class AccountInfo:
+    def __init__(self, name, cash_on_account, bankname):
+        self.name = name
+        self.cash_on_account = cash_on_account
+        Bank.bankname = bankname
+
+    def __str__(self):
+        return 'Name: ' + str(self.name) + ', money: ' + str(self.cash_on_account)
+
+    def cash_input(self, add_money):
+        self.cash_on_account = self.cash_on_account + add_money
+
+    def send_money(self, how_much_money, clientX):
+        self.cash_on_account = self.cash_on_account-how_much_money
+        clientX.cash_on_account = clientX.cash_on_account + how_much_money
+
+
+if __name__ == "__main__":
+    bank1 = Bank("BestBankEver")
+
+    client1 = AccountInfo("Jakub", 123, bank1)
+    print(client1)
+    client1.cash_input(12)
+    print(client1)
+
+    client2 = AccountInfo("Witek", 100, bank1)
+    print(client2)
+
+    client1.send_money(20, client2)
+    print(client1)
+    print(client2)
+
+
+
+
+
+
+
