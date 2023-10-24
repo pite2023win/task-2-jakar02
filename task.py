@@ -36,7 +36,7 @@ class AccountInfo:
         Bank.bankname = bankname
 
     def __str__(self):
-        return 'Name: ' + str(self.name) + ', money: ' + str(self.cash_on_account)
+        return 'Name: ' + str(self.name) + ', money: ' + str(self.cash_on_account) #+ str(Bank.bankname)
 
     def cash_input(self, add_money):
         self.cash_on_account = self.cash_on_account + add_money
